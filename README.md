@@ -10,4 +10,4 @@ The project demonstrate usage of akka-streams. The application downloads covid d
  - Calculate average of deaths & newCases by country
  
 
-<img src="https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png"  width="120" height="200"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Akka_toolkit_logo.svg/1200px-Akka_toolkit_logo.svg.png"  width="300" height="200">
+<img src="https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png"  width="120" height="200"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Akka_toolkit_logo.svg/1200px-Akka_toolkit_logo.svg.png"  width="400" height="200">
