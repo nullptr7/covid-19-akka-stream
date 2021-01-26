@@ -5,14 +5,12 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.client.RequestBuilding.Get
 import akka.http.scaladsl.model.{HttpResponse, Uri}
+import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{FileIO, Source}
-import akka.stream.{ActorMaterializer, IOResult, Materializer}
 import akka.util.ByteString
-import com.github.nullptr7.entrypoint.Covid19AverageCalculator.system
 
 import java.io.File
-import scala.concurrent.Future
-import scala.util.{Failure, Success, Try}
+import scala.util.Try
 
 object CovidDataDownloader {
 

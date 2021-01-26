@@ -1,7 +1,7 @@
 package com.github.nullptr7
 package entrypoint
 
-import domain.{CalculationResponse, CovidData, Person}
+import domain.{CalculationResponse, CovidData}
 import util.CovidDataDownloader.{actorSystem, downloadFile}
 
 import akka.NotUsed
@@ -11,7 +11,6 @@ import akka.stream.scaladsl.{Broadcast, Flow, GraphDSL, RunnableGraph, Sink, Sou
 import akka.stream.{ActorMaterializer, ClosedShape, FlowShape, UniformFanOutShape}
 
 import java.io.File
-import java.nio.file.Paths
 import scala.io.BufferedSource
 import scala.util.{Failure, Success}
 
