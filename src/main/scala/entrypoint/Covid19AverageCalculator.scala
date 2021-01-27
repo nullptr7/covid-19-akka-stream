@@ -8,7 +8,7 @@ import akka.NotUsed
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.Uri
 import akka.stream.scaladsl.{Broadcast, Flow, GraphDSL, RunnableGraph, Sink, Source}
-import akka.stream.{ActorMaterializer, ClosedShape, FlowShape, UniformFanOutShape}
+import akka.stream.{ClosedShape, FlowShape, Materializer, SystemMaterializer, UniformFanOutShape}
 
 import java.io.File
 import scala.io.BufferedSource
@@ -17,7 +17,7 @@ import scala.util.{Failure, Success}
 object Covid19AverageCalculator {
 
   private implicit val system: ActorSystem = ActorSystem("Covid19AverageCalculator")
-  private implicit val materializer = ActorMaterializer()(system)
+  private implicit val materializer: Materializer = SystemMaterializer(system).materializer
 
   def main(args: Array[String]): Unit = {
 
