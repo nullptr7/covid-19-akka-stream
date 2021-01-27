@@ -5,17 +5,18 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.client.RequestBuilding.Get
 import akka.http.scaladsl.model.{HttpResponse, Uri}
-import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{FileIO, Source}
+import akka.stream.{IOResult, Materializer, SystemMaterializer}
 import akka.util.ByteString
 
 import java.io.File
+import scala.concurrent.Future
 import scala.util.Try
 
 object CovidDataDownloader {
 
   implicit val actorSystem: ActorSystem = ActorSystem("CovidDataDownloader")
-  private implicit val localMat = ActorMaterializer()(actorSystem)
+  private implicit val localMat: Materializer = SystemMaterializer(actorSystem).materializer
 
   def responseOrFail(in: (Try[HttpResponse], Unit)): (HttpResponse, Unit) = in match {
     case (responseTry, context) => (responseTry.get, context)
@@ -25,7 +26,7 @@ object CovidDataDownloader {
     case (response, _) => response.entity.dataBytes
   }
 
-  def downloadFile(uri: Uri) = {
+  def downloadFile(uri: Uri): Future[IOResult] = {
 
     val file = new File("src/main/resources/covid-data.csv")
     file.delete()

@@ -1,6 +1,7 @@
 package com.github.nullptr7
 package domain
 
+import scala.language.implicitConversions
 import scala.util.Try
 
 case class CovidData(country: String, implicit val newCases: Option[Int], implicit val newDeaths: Option[Int])
